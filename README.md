@@ -4,6 +4,8 @@
 rails new video --main --database=postgresql
 ```
 
+Create `.env`.
+
 ```bash
 RAILS_ENV=production
 POSTGRES_HOST=db
@@ -45,7 +47,17 @@ dcr
 
 Create and adjust `dev.dockerfile`.
 
-Create `.end.development`.
+Create `.env.development`.
+
+```bash
+# .env.development
+RAILS_ENV=development
+POSTGRES_HOST=db
+POSTGRES_DB=videodb_development
+POSTGRES_USER=dean
+POSTGRES_PASSWORD=password123
+RAILS_MASTER_KEY=169a416e80ae5efd52345b0e2fb6dced
+```
 
 <!-- ```bash
 docker build -f dev.dockerfile -t video-demo-web:development .
@@ -55,7 +67,7 @@ docker build -f dev.dockerfile -t video-demo-web:development .
 docker run -p 3000:3000 -v $(pwd):/rails video-demo-web:development # -v development
 ```
 
-Create .end.development
+Create .env.development
 
 ```bash
 docker run -it --rm \
