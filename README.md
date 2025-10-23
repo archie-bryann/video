@@ -45,6 +45,8 @@ dcr
 
 Create and adjust `dev.dockerfile`.
 
+Create `.end.development`.
+
 <!-- ```bash
 docker build -f dev.dockerfile -t video-demo-web:development .
 ```
