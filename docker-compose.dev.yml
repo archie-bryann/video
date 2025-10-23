@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:14.2-alpine
+    container_name: video-dev-postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: "postgres -c 'max_connections=500'"
+    env_file:
+      - .env.development
+    ports:
+      - "5432:5432"
+
+  video-web:
+    image: video-demo-web:development
+    build:
+      context: .
+      dockerfile: dev.dockerfile
+    container_name: video-dev-web
+    # command: ./bin/thrust ./bin/rails server -b 0.0.0.0
+    command: bash -c "rm -f tmp/pids/server.pid && ./bin/rails server -b 0.0.0.0"
+    volumes:
+      - .:/rails
+    env_file:
+      - .env.development
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data: {}

@@ -15,6 +15,7 @@ FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 WORKDIR /rails
 
 # Install base packages
+# Added more packages here for deployment
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 libvips bash bash-completion libffi-dev tzdata postgresql nodejs npm postgresql-client && \
     npm install -g yarn && \
