@@ -16,18 +16,18 @@ WORKDIR /rails
 
 # Install base packages
 # Added more packages here for deployment
-# RUN apt-get update -qq && \
-#     apt-get install --no-install-recommends -y curl libjemalloc2 libvips bash bash-completion libffi-dev tzdata postgresql nodejs npm postgresql-client && \
-#     npm install -g yarn && \
-#     ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so && \
-#     rm -rf /var/lib/apt/lists /var/cache/apt/archives
-RUN rm -rf /var/lib/apt/lists/* && \
-    apt-get clean && \
-    apt-get update -qq && \
+RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 libvips bash bash-completion libffi-dev tzdata postgresql nodejs npm postgresql-client && \
     npm install -g yarn && \
     ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+# RUN rm -rf /var/lib/apt/lists/* && \
+#     apt-get clean && \
+#     apt-get update -qq && \
+#     apt-get install --no-install-recommends -y curl libjemalloc2 libvips bash bash-completion libffi-dev tzdata postgresql nodejs npm postgresql-client && \
+#     npm install -g yarn && \
+#     ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so && \
+#     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment variables and enable jemalloc for reduced memory usage and latency.
 ENV RAILS_ENV="production" \
